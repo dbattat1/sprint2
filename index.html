@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body onload="onInit()">
+    <header class="flex space-between align-center">
+        <div class="logo" onclick="onGoToGallery()"><img src="DESIGN/LOGO/LOGO.png"></div>
+        <div class="nav">
+            <ul class="flex clean-list">
+                <li>
+                    <a class="to-gallery-btn" onclick="onGoToGallery()">Gallery</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="gallery">
+        <input class="file-input btn" type="file" name="image" onchange="onImgInput(event)" />
+        <!-- <button onclick="onLoadImg()">Load Image</button> -->
+        <div class="gallery-images">
+
+        </div>
+    </div>
+
+    
+    <div class="editor space-evenly hide">
+        <!-- <div class="canvas-container"> -->
+        <canvas id="my-canvas" height="450" width="450" onmousedown="onCanvasClicked(event);onmousemove=onMove(event)"></canvas>
+        <!-- </div> -->
+        <div class="editor-panel flex column align-center">
+            <input class="text-input" type="text" name="lineText" oninput="onSetText()">
+            <div class="line-1">
+                <button class="editor-btn" onclick="onIncreaseFontSize()"><img src="ICONS/increase font - icon.png"></button>
+                <button class="editor-btn" onclick="onDecreaseFontSize()"><img src="ICONS/decrease font - icon.png"></button>
+                <input type="color" title="outline color" name="outlineColor" onchange="onSetOutlineColor()">
+                <input type="color" title="fill color" value="#ffffff" name="color" onchange="onSetColor()">
+            </div>
+            <div class="line-2">
+                <button class="editor-btn" onclick="onSetHeight(-10)">↑</button>
+                <button class="editor-btn" onclick="onSetHeight(+10)">↓</button>
+                <button class="editor-btn" onclick="onChangeSelectedLine()">Change line</button>
+                <button class="editor-btn" onclick="onDeleteLine()">Delete line</button>
+            </div>
+            <div class="line-3">
+                <select class="btn-change-font" onchange="onSetFont(this)">
+                    <option id="0" >Impact</option>
+                    <option id="1" >Arial</option>
+                    <option id="2" >Verdana</option>
+                </select>
+                <button class="editor-btn" onclick="onAddLine()">Add line</button>
+                <button class="editor-btn" >
+                    <a onclick="onDownload(this)">Download</a>
+                </button>
+            </div>
+            <div class="line-4">
+                <button class="editor-btn" onclick="onSetAlignment('left')"><img src="ICONS/align-to-left.png"></button>
+                <button class="editor-btn" onclick="onSetAlignment('center')"><img src="ICONS/center-text-alignment.png" </button>
+                <button class="editor-btn" onclick="onSetAlignment('right')"><img src="ICONS/align-to-right.png"></button>
+            </div>
+
+            <form class="flex" action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
+                <input name="img" id="imgData" type="hidden" />
+                <button class="btn" type="submit">Publish</button>
+                <!-- <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a> -->
+                <div class="share-container"></div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="uploadService.js"></script>
+    <script src="service.js"></script>
+    <script src="controller.js"></script>
+</body>
+</html>
