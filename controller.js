@@ -8,7 +8,7 @@ function onInit() {
 
     var strHtml = '';
     for (var i = 1; i <= 18; i++) {
-        strHtml += `<img src="\\meme-imgs (square)\\${i}.jpg" onclick="onSetPicture(${i})">`;
+        strHtml += `<img src=".\\meme-imgs (square)\\${i}.jpg" onclick="onSetPicture(${i})">`;
     }
     document.querySelector('.gallery-images').innerHTML = strHtml;
 }
