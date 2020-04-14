@@ -18,9 +18,10 @@ function onSetPicture(idx) {
     changeUiArea();
     var img = new Image();
     img.src = `.\\meme-imgs (square)\\${gMeme.selectedImgId}.jpg`;
+    gImg = img;
+    renderCanvas();
     img.onload = () => {
-        gImg = img;
-        renderCanvas();
+        
     }
 }
 
